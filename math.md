@@ -164,19 +164,3 @@ Position PID: θref = Kp_θ × eθ + Ki_θ × ∫eθdt + Kd_θ × (deθ/dt)
 where:
 - eθ: Position error
 ```
-
-## Additional Notes
-
-1. The equations above assume ideal conditions and may need modification for:
-   - Temperature effects
-   - Magnetic saturation
-   - Cogging torque
-   - Dead time effects
-   - Switching losses
-
-2. For practical implementation:
-   - Include current limiting
-   - Consider voltage headroom
-   - Account for sensor offsets
-   - Implement protection features
-   - Add anti-windup for controllers
