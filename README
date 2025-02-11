@@ -1,0 +1,6 @@
+This is motor control application layer with a simulation tool.
+Meant for embedded devices with a hardware agonistic interface.
+
+Really helpful resource
+
+https://www.ti.com/lit/an/sprabq7a/sprabq7a.pdf?ts=1739014938041
