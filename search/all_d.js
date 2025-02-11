@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['params_0',['params',['../structMotorModelConfig__t.html#a64d496995b8be68a4049703ff4f0ca4e',1,'MotorModelConfig_t']]],
+  ['phase_5fcurrents_1',['phase_currents',['../structMotorState__t.html#a0801516c1aad4e3a4041bd79544ec8c0',1,'MotorState_t::phase_currents()'],['../structMotorModelState__t.html#a0801516c1aad4e3a4041bd79544ec8c0',1,'MotorModelState_t::phase_currents()']]],
+  ['phase_5finductance_2',['phase_inductance',['../structMotorConfig__t.html#a16d33d75417c174099dfcc2305d1de0c',1,'MotorConfig_t::phase_inductance()'],['../structMotorModelConfig__t.html#a16d33d75417c174099dfcc2305d1de0c',1,'MotorModelConfig_t::phase_inductance()']]],
+  ['phase_5fresistance_3',['phase_resistance',['../structMotorConfig__t.html#a259d7e8e744a678ff4f80076725218af',1,'MotorConfig_t::phase_resistance()'],['../structMotorModelConfig__t.html#a259d7e8e744a678ff4f80076725218af',1,'MotorModelConfig_t::phase_resistance()']]],
+  ['phase_5fvoltages_4',['phase_voltages',['../structMotorModelState__t.html#abf94b3b579116f34e8d4020c820be901',1,'MotorModelState_t::phase_voltages()'],['../structMotorState__t.html#abf94b3b579116f34e8d4020c820be901',1,'MotorState_t::phase_voltages()']]],
+  ['pid_20control_20loop_5',['PID Control loop',['../group__PIDControl__Utils.html',1,'']]],
+  ['pid_5finit_6',['pid_init',['../group__PIDControl__Utils.html#gac6dfedfbdf1f358a0f17896c06279c73',1,'pid_init(struct PidController_t *pid, struct PidConfig_t *config):&#160;pid.c'],['../group__PIDControl__Utils.html#gac6dfedfbdf1f358a0f17896c06279c73',1,'pid_init(struct PidController_t *pid, struct PidConfig_t *config):&#160;pid.c']]],
+  ['pid_5fupdate_7',['pid_update',['../group__PIDControl__Utils.html#ga30f597cbc37996615727586c722745d1',1,'pid_update(struct PidController_t *pid, float set_point, float measurement, float delta_time):&#160;pid.c'],['../group__PIDControl__Utils.html#ga30f597cbc37996615727586c722745d1',1,'pid_update(struct PidController_t *pid, float set_point, float measurement, float delta_time):&#160;pid.c']]],
+  ['pidconfig_5ft_8',['PidConfig_t',['../structPidConfig__t.html',1,'']]],
+  ['pidcontroller_5ft_9',['PidController_t',['../structPidController__t.html',1,'']]],
+  ['pmsm_20class_10',['PMSM class',['../group__PMSM.html',1,'']]],
+  ['pmsm_20motor_20model_20for_20simulation_11',['PMSM Motor Model for Simulation',['../group__SimulationPMSMMotorModel.html',1,'']]],
+  ['pmsm_5fcreate_5fdriver_12',['pmsm_create_driver',['../group__PMSM.html#ga6499401d6bd51f72d36409f72663255e',1,'pmsm_create_driver(struct Motor_t *motor):&#160;pmsm_driver.c'],['../group__PMSM.html#ga6499401d6bd51f72d36409f72663255e',1,'pmsm_create_driver(struct Motor_t *motor):&#160;pmsm_driver.c']]],
+  ['pmsm_5fcreate_5fmodel_13',['pmsm_create_model',['../group__SimulationPMSMMotorModel.html#gad29c72216cb2b17dba8003d3184010d4',1,'pmsm_model.h']]],
+  ['pmsmdata_5ft_14',['PMSMData_t',['../structPMSMData__t.html',1,'']]],
+  ['pole_5fpairs_15',['pole_pairs',['../structMotorModelConfig__t.html#a88cf0e3976a0163c434e1c5a8af42dab',1,'MotorModelConfig_t::pole_pairs()'],['../structMotorConfig__t.html#a88cf0e3976a0163c434e1c5a8af42dab',1,'MotorConfig_t::pole_pairs()']]],
+  ['position_16',['position',['../structMotor__t.html#a43c41d54265dd7e3a68dc7513bbca70c',1,'Motor_t::position()'],['../structMotor__t.html#a76777b356ab2a080225682528119c4fe',1,'Motor_t::position()'],['../structMotorState__t.html#a76777b356ab2a080225682528119c4fe',1,'MotorState_t::position()']]],
+  ['prev_5fderivative_17',['prev_derivative',['../structPidController__t.html#afaf612440717fd258e512ce3aa95751c',1,'PidController_t']]],
+  ['prev_5ferror_18',['prev_error',['../structPidController__t.html#a461cae71b420a0cbbb17f75db63af2b8',1,'PidController_t']]],
+  ['private_5fdata_19',['private_data',['../structMotor__t.html#ad517770dac2061381b2008850ff12e6c',1,'Motor_t']]],
+  ['pwm_5fduty_20',['pwm_duty',['../structBLDCData__t.html#ad59ecf7f8939b2c735ca4cfe687166df',1,'BLDCData_t']]],
+  ['pwmconfig_5ft_21',['PwmConfig_t',['../structPwmConfig__t.html',1,'']]]
+];
