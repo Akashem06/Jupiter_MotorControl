@@ -12,13 +12,11 @@ file(GLOB_RECURSE CORE_SOURCES
 
 file(GLOB_RECURSE SIM_SOURCES 
     "simulation/src/*.c"
-    "simulation/models/src/*.c"
     "hal/src/hal_sim.c"
 )
 
 file(GLOB TEST_SOURCES 
     "tests/src/*.c"
-    "simulation/models/src/*.c"
 )
 
 include(FetchContent)
@@ -35,9 +33,7 @@ target_include_directories(
     motor_core PUBLIC
     ${CMAKE_SOURCE_DIR}/inc
     ${CMAKE_SOURCE_DIR}/core/inc
-    ${CMAKE_SOURCE_DIR}/core/bldc/inc
-    ${CMAKE_SOURCE_DIR}/core/pmsm/inc
-    ${CMAKE_SOURCE_DIR}/core/stepper/inc
+    ${CMAKE_SOURCE_DIR}/core/bldc_6step/inc
     ${CMAKE_SOURCE_DIR}/utils/inc
     ${CMAKE_SOURCE_DIR}/hal/inc
 )
@@ -47,9 +43,9 @@ add_executable(sim_bldc ${SIM_SOURCES})
 target_include_directories(
     sim_bldc PRIVATE
     ${CMAKE_SOURCE_DIR}/simulation/inc
-    ${CMAKE_SOURCE_DIR}/simulation/models/inc
     ${CMAKE_SOURCE_DIR}/hal/inc
 )
+
 target_link_libraries(
     sim_bldc 
     PRIVATE
@@ -62,14 +58,14 @@ add_executable(run_tests ${TEST_SOURCES})
 target_include_directories(
     run_tests PRIVATE
     ${CMAKE_SOURCE_DIR}/tests/inc
-    ${CMAKE_SOURCE_DIR}/simulation/models/inc
     ${CMAKE_SOURCE_DIR}/core/inc
-    ${CMAKE_SOURCE_DIR}/core/bldc/inc
+    ${CMAKE_SOURCE_DIR}/core/bldc_6step/inc
     ${CMAKE_SOURCE_DIR}/core/pmsm/inc
     ${CMAKE_SOURCE_DIR}/core/stepper/inc
     ${CMAKE_SOURCE_DIR}/utils/inc
     ${CMAKE_SOURCE_DIR}/hal/inc
 )
+
 target_link_libraries(
     run_tests
     PRIVATE

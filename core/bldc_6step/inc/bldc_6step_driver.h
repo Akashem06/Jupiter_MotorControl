@@ -1,7 +1,7 @@
 #pragma once
 
 /*******************************************************************************************************************************
- * @file   bldc_driver.h
+ * @file   bldc_6step_driver.h
  *
  * @brief  Header file for the BLDC driver
  *
@@ -34,11 +34,24 @@ typedef enum {
 } ZeroCrossingState_t;
 
 /**
+ * @brief   Motor mode definitions
+ */
+typedef enum {
+  MOTOR_MODE_STOPPED,    /**< Motor is stopped */
+  MOTOR_MODE_ALIGNING,   /**< Initial rotor alignment phase */
+  MOTOR_MODE_OPEN_LOOP,  /**< Open-loop startup sequence */
+  MOTOR_MODE_TRANSITION, /**< Transition from open to closed loop */
+  MOTOR_MODE_RUNNING,    /**< Normal closed-loop operation */
+  MOTOR_MODE_BRAKING,    /**< Active braking */
+  MOTOR_MODE_ERROR       /**< Error state */
+} MotorMode_t;
+
+/**
  * @brief   BLDC Motor data storage
  */
-struct BLDCData_t {
+struct BLDC_6Step_Data_t {
   uint8_t step;                 /**< Current commutation step (0-5) */
-  uint16_t pwm_duty;            /**< Current PWM duty cycle */
+  float pwm_duty;               /**< Current PWM duty cycle */
   float bemf[NUM_MOTOR_PHASES]; /**< Back-EMF measurements for each phase */
   bool direction;               /**< Rotation direction (true = forward) */
 
@@ -51,12 +64,14 @@ struct BLDCData_t {
 
   float bemf_filtered[NUM_MOTOR_PHASES]; /**< Filtered Back-EMF values */
   float bemf_filter_alpha;               /**< Back-EMF filter coefficient */
+
+  MotorMode_t mode; /**< Motor mode */
 };
 
 /**
  * @brief   Create BLDC motor driver
  * @param   motor Pointer to a motor instance
  */
-void bldc_create_driver(struct Motor_t *motor);
+void bldc_6step_create_driver(struct Motor_t *motor);
 
 /** @} */

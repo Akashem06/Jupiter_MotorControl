@@ -23,3 +23,7 @@ float clamp(float value, float min, float max) {
     return value;
   }
 }
+
+float fminf(float value_1, float value_2) {
+  return value_1 < value_2 ? value_1 : value_2;
+}

@@ -1,7 +1,7 @@
 /*******************************************************************************************************************************
- * @file   motor_model.c
+ * @file   motor.c
  *
- * @brief  Source file for the simulation motor model
+ * @brief  Source file for the main motor control loop
  *
  * @date   2025-02-07
  * @author Aryan Kashem

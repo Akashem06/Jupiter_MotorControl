@@ -1,38 +1,33 @@
 #pragma once
 
 /*******************************************************************************************************************************
- * @file   pmsm_driver.h
+ * @file   test_bldc_sensorless_driver.h
  *
- * @brief  Header file for the PMSM driver
+ * @brief  Header file for BLDC driver tests
  *
  * @date   2025-02-07
  * @author Aryan Kashem
  *******************************************************************************************************************************/
 
 /* Standard library Headers */
-#include <stdbool.h>
-#include <stdint.h>
 
 /* Inter-component Headers */
 
 /* Intra-component Headers */
-#include "motor.h"
 
 /**
- * @defgroup PMSM PMSM class
- * @brief    Permanent magnet synchronous motor class
+ * @defgroup TestHeaders Test files
+ * @brief    Test headers for Motor control
  * @{
  */
 
 /**
- * @brief   PMSM data storage
+ * @brief   Run BLDC sensorless driver tests
  */
-struct PMSMData_t {};
+void run_bldc_sensorless_driver_tests();
 
-/**
- * @brief   Create PMSM motor driver
- * @param   motor Pointer to a motor instance
- */
-void pmsm_create_driver(struct Motor_t *motor);
+void bldc_sensorless_driver_test_set_up();
+
+void bldc_sensorless_driver_test_tear_down();
 
 /** @} */

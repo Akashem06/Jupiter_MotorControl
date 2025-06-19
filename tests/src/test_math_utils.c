@@ -28,8 +28,7 @@ void test_clamp_gtmax() {
   float test_max_output = 9.0f;
   float test_min_output = 1.0f;
 
-  TEST_ASSERT_FLOAT_WITHIN(0.1f, test_max_output,
-                           clamp(test_input, test_min_output, test_max_output));
+  TEST_ASSERT_FLOAT_WITHIN(0.1f, test_max_output, clamp(test_input, test_min_output, test_max_output));
 }
 
 void test_clamp_lsmin() {
@@ -37,8 +36,7 @@ void test_clamp_lsmin() {
   float test_max_output = 9.0f;
   float test_min_output = 1.0f;
 
-  TEST_ASSERT_FLOAT_WITHIN(0.1f, test_min_output,
-                           clamp(test_input, test_min_output, test_max_output));
+  TEST_ASSERT_FLOAT_WITHIN(0.1f, test_min_output, clamp(test_input, test_min_output, test_max_output));
 }
 
 void run_math_utils_tests() {

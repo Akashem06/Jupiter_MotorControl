@@ -29,8 +29,7 @@ void pid_init(struct PidController_t *pid, struct PidConfig_t *config) {
   pid->is_initialized = true;
 }
 
-float pid_update(struct PidController_t *pid, float set_point, float measurement,
-                 float delta_time) {
+float pid_update(struct PidController_t *pid, float set_point, float measurement, float delta_time) {
   if (pid == NULL || pid->is_initialized == false) {
     return 0.0f;
   }
@@ -46,15 +45,13 @@ float pid_update(struct PidController_t *pid, float set_point, float measurement
   /* Only calculate if time is not 0 and previous error is a valid value */
   if (delta_time > 0.0f && pid->prev_error != 0.0f) {
     derivative = (error - pid->prev_error) / delta_time;
-    derivative = (pid->config->derivative_ema_alpha * derivative) +
-                 ((1.0f - pid->config->derivative_ema_alpha) * pid->prev_derivative);
+    derivative = (pid->config->derivative_ema_alpha * derivative) + ((1.0f - pid->config->derivative_ema_alpha) * pid->prev_derivative);
     pid->prev_derivative = derivative;
   }
 
   pid->prev_error = error;
 
-  float output = (pid->config->kp * error) + (pid->config->ki * pid->integral) +
-                 (pid->config->kd * derivative);
+  float output = (pid->config->kp * error) + (pid->config->ki * pid->integral) + (pid->config->kd * derivative);
 
   /* Integral windup */
   if (output > pid->config->output_max) {

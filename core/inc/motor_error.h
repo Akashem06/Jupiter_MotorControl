@@ -30,6 +30,7 @@ typedef enum {
   MOTOR_INIT_ERROR,
   MOTOR_OVERVOLTAGE_ERROR,
   MOTOR_OVERCURRENT_ERROR,
+  MOTOR_HAL_ERROR,
 } MotorError_t;
 
 /** @} */

@@ -87,6 +87,10 @@ void hal_pwm_set_duty(MotorPhase_t phase, uint16_t duty);
 
 uint32_t hal_get_micros();
 
+void hal_delay_us(uint32_t delay_us);
+
+void hal_delay_ms(uint32_t delay_ms);
+
 void hal_adc_start_conversion();
 
 void hal_adc_get_phase_voltages(float *voltages);
@@ -96,5 +100,9 @@ void hal_adc_get_phase_currents(float *currents);
 float hal_adc_get_dc_voltage();
 
 float hal_adc_get_temperature();
+
+bool hal_gpio_init_hall_sensors();
+
+uint8_t hal_gpio_get_hall_state();
 
 /** @} */

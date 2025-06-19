@@ -16,12 +16,7 @@
 /* Intra-component Headers */
 
 void test_pid_init() {
-  struct PidConfig_t config = { .kp = 1.0f,
-                                .ki = 1.0f,
-                                .kd = 1.0f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 0.1f };
+  struct PidConfig_t config = { .kp = 1.0f, .ki = 1.0f, .kd = 1.0f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 0.1f };
 
   struct PidController_t pid;
 
@@ -42,12 +37,7 @@ void test_pid_invalid_config() {
 }
 
 void test_pid_update_no_error() {
-  struct PidConfig_t config = { .kp = 1.0f,
-                                .ki = 1.0f,
-                                .kd = 1.0f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 0.1f };
+  struct PidConfig_t config = { .kp = 1.0f, .ki = 1.0f, .kd = 1.0f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 0.1f };
 
   struct PidController_t pid;
 
@@ -63,12 +53,7 @@ void test_pid_update_no_error() {
 }
 
 void test_pid_kp_update_positive_error() {
-  struct PidConfig_t config = { .kp = 1.0f,
-                                .ki = 0.0f,
-                                .kd = 0.0f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 0.1f };
+  struct PidConfig_t config = { .kp = 1.0f, .ki = 0.0f, .kd = 0.0f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 0.1f };
 
   struct PidController_t pid;
 
@@ -84,12 +69,7 @@ void test_pid_kp_update_positive_error() {
 }
 
 void test_pid_kp_update_negative_error() {
-  struct PidConfig_t config = { .kp = 1.0f,
-                                .ki = 0.0f,
-                                .kd = 0.0f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 0.1f };
+  struct PidConfig_t config = { .kp = 1.0f, .ki = 0.0f, .kd = 0.0f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 0.1f };
 
   struct PidController_t pid;
 
@@ -105,12 +85,7 @@ void test_pid_kp_update_negative_error() {
 }
 
 void test_pid_ki_update_positive_error() {
-  struct PidConfig_t config = { .kp = 0.0f,
-                                .ki = 1.0f,
-                                .kd = 0.0f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 0.1f };
+  struct PidConfig_t config = { .kp = 0.0f, .ki = 1.0f, .kd = 0.0f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 0.1f };
 
   struct PidController_t pid;
 
@@ -127,12 +102,7 @@ void test_pid_ki_update_positive_error() {
 }
 
 void test_pid_ki_update_negative_error() {
-  struct PidConfig_t config = { .kp = 0.0f,
-                                .ki = 1.0f,
-                                .kd = 0.0f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 0.1f };
+  struct PidConfig_t config = { .kp = 0.0f, .ki = 1.0f, .kd = 0.0f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 0.1f };
 
   struct PidController_t pid;
 
@@ -166,8 +136,7 @@ void test_pid_kd_update_positive_error() {
   float delta_time = 0.1f;
 
   float output = pid_update(&pid, set_point, measurement, delta_time);
-  TEST_ASSERT_FLOAT_WITHIN(
-      0.1f, 0.0f, output); /* First derivative should be 0 since we don't have a previous error */
+  TEST_ASSERT_FLOAT_WITHIN(0.1f, 0.0f, output); /* First derivative should be 0 since we don't have a previous error */
 
   measurement = 4.0f;
   output = pid_update(&pid, set_point, measurement, delta_time);
@@ -194,8 +163,7 @@ void test_pid_kd_update_negative_error() {
   float delta_time = 0.1f;
 
   float output = pid_update(&pid, set_point, measurement, delta_time);
-  TEST_ASSERT_FLOAT_WITHIN(
-      0.1f, 0.0f, output); /* First derivative should be 0 since we don't have a previous error */
+  TEST_ASSERT_FLOAT_WITHIN(0.1f, 0.0f, output); /* First derivative should be 0 since we don't have a previous error */
 
   measurement = 16.0f;
   output = pid_update(&pid, set_point, measurement, delta_time);
@@ -205,12 +173,7 @@ void test_pid_kd_update_negative_error() {
 }
 
 void test_pid_kd_with_ema_filter() {
-  struct PidConfig_t config = { .kp = 0.0f,
-                                .ki = 0.0f,
-                                .kd = 1.0f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 0.5f };
+  struct PidConfig_t config = { .kp = 0.0f, .ki = 0.0f, .kd = 1.0f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 0.5f };
 
   struct PidController_t pid;
   pid_init(&pid, &config);
@@ -220,8 +183,7 @@ void test_pid_kd_with_ema_filter() {
   float delta_time = 0.1f;
 
   float output = pid_update(&pid, set_point, measurement, delta_time);
-  TEST_ASSERT_FLOAT_WITHIN(
-      0.1f, 0.0f, output); /* First derivative should be 0 since we don't have a previous error */
+  TEST_ASSERT_FLOAT_WITHIN(0.1f, 0.0f, output); /* First derivative should be 0 since we don't have a previous error */
 
   measurement = 4.0f;
   output = pid_update(&pid, set_point, measurement, delta_time);
@@ -236,12 +198,7 @@ void test_pid_kd_with_ema_filter() {
 }
 
 void test_pid_integral_windup_positive() {
-  struct PidConfig_t config = { .kp = 0.0f,
-                                .ki = 1.0f,
-                                .kd = 0.0f,
-                                .output_max = 10.0f,
-                                .output_min = -10.0f,
-                                .derivative_ema_alpha = 1.0f };
+  struct PidConfig_t config = { .kp = 0.0f, .ki = 1.0f, .kd = 0.0f, .output_max = 10.0f, .output_min = -10.0f, .derivative_ema_alpha = 1.0f };
 
   struct PidController_t pid;
   pid_init(&pid, &config);
@@ -259,12 +216,7 @@ void test_pid_integral_windup_positive() {
 }
 
 void test_pid_integral_windup_negative() {
-  struct PidConfig_t config = { .kp = 0.0f,
-                                .ki = 1.0f,
-                                .kd = 0.0f,
-                                .output_max = 10.0f,
-                                .output_min = -10.0f,
-                                .derivative_ema_alpha = 1.0f };
+  struct PidConfig_t config = { .kp = 0.0f, .ki = 1.0f, .kd = 0.0f, .output_max = 10.0f, .output_min = -10.0f, .derivative_ema_alpha = 1.0f };
 
   struct PidController_t pid;
   pid_init(&pid, &config);
@@ -282,12 +234,7 @@ void test_pid_integral_windup_negative() {
 }
 
 void test_pid_zero_delta_time() {
-  struct PidConfig_t config = { .kp = 1.0f,
-                                .ki = 1.0f,
-                                .kd = 1.0f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 1.0f };
+  struct PidConfig_t config = { .kp = 1.0f, .ki = 1.0f, .kd = 1.0f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 1.0f };
 
   struct PidController_t pid;
   pid_init(&pid, &config);
@@ -303,12 +250,7 @@ void test_pid_zero_delta_time() {
 }
 
 void test_pid_large_delta_time() {
-  struct PidConfig_t config = { .kp = 1.0f,
-                                .ki = 1.0f,
-                                .kd = 1.0f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 1.0f };
+  struct PidConfig_t config = { .kp = 1.0f, .ki = 1.0f, .kd = 1.0f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 1.0f };
 
   struct PidController_t pid;
   pid_init(&pid, &config);
@@ -325,12 +267,7 @@ void test_pid_large_delta_time() {
 }
 
 void test_pid_changing_setpoint() {
-  struct PidConfig_t config = { .kp = 1.0f,
-                                .ki = 0.1f,
-                                .kd = 0.1f,
-                                .output_max = 100.0f,
-                                .output_min = -100.0f,
-                                .derivative_ema_alpha = 1.0f };
+  struct PidConfig_t config = { .kp = 1.0f, .ki = 0.1f, .kd = 0.1f, .output_max = 100.0f, .output_min = -100.0f, .derivative_ema_alpha = 1.0f };
 
   struct PidController_t pid;
   pid_init(&pid, &config);

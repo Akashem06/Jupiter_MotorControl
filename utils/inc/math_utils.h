@@ -34,4 +34,12 @@
  */
 float clamp(float value, float min, float max);
 
+/**
+ * @brief   Returns the minimum float value between two provided values
+ * @param   value_1 First float to compare with
+ * @param   value_2 Second float to compare with
+ * @return  Minimum float value of the two parameters
+ */
+float fminf(float value_1, float value_2);
+
 /** @} */

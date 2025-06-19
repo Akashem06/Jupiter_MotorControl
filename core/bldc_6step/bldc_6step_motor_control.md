@@ -1,6 +1,17 @@
 
 ## Sensorless Control loop
 
+General flow:
+Initialization -> Startup sequence in open-loop by accelerating motor until enough back-EMF is generated -> CONTROL LOOP
+CONTROL LOOP:
+1. Update state (Checks voltages, temperatures, currents, calculates new PWM-duty using PID on curernt/velocity depending on control mode)
+2. Checks for commutation (zero-crossing events). If commutation, updates the estimated speed, the step. Finally, applies the current steps PWM duty-cycles based on PID output from step 1
+
+Zero-crossing detection allows us to determine when we are at the **MID-WAY** point of a 60deg motor sector.
+This allows us to easily calculate speed, then delay for a period of time before triggering a phase-switch.
+Ideally, we use half of our commutation_period (prev zero-crossing vs current zero-crossing) to determine when we
+switch phases. This can be done using delayed-jobs, callback functions or schedulers.
+
 ## Hall sensor Control loop
 
 ## Current Controlled V.S Velocity Controlled
