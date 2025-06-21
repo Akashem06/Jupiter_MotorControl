@@ -10,6 +10,7 @@
  *******************************************************************************************************************************/
 
 /* Standard library Headers */
+#include <stdint.h>
 
 /* Inter-component Headers */
 
@@ -22,7 +23,18 @@
  */
 
 /** @brief  Pi */
-#define MATH_PI 3.14159265358979323846f
+#define MATH_PI 3.141592653f
+
+/** @brief  2 Pi */
+#define MATH_TWO_PI 6.283185307f
+
+/** @brief  Pi / 3 */
+#define MATH_PI_OVER_3 1.047197551f
+
+#define SQRT3 1.732050807f            /**< sqrt(3) */
+#define SQRT3_OVER_2 0.866025408f     /**< sqrt(3) / 2 */
+#define INV_SQRT3_OVER_2 1.154700538f /**< 2 / sqrt(3) */
+#define INV_SQRT3 0.577350269f        /**< 1 / sqrt(3) */
 
 /**
  * @brief   Clamp a provided value between a minimum and maximum
@@ -41,5 +53,28 @@ float clamp(float value, float min, float max);
  * @return  Minimum float value of the two parameters
  */
 float fminf(float value_1, float value_2);
+
+/**
+ * @brief   Normalize angle into [0, 2π)
+ * @param   angle Input angle (radians)
+ * @return  Normalized angle (radians)
+ */
+float normalize_angle(float angle);
+
+/**
+ * @brief   Convert mechanical angle to electrical angle
+ * @param   mechanical_angle Mechanical angle (radians)
+ * @param   pole_pairs Number of motor pole pairs
+ * @return  Electrical angle (radians)
+ */
+float mech_to_elec_angle(float mechanical_angle, uint8_t pole_pairs);
+
+/**
+ * @brief   Compute sine and cosine of an angle efficiently
+ * @param   angle Input angle (radians)
+ * @param   sin_out Pointer to store sine result
+ * @param   cos_out Pointer to store cosine result
+ */
+void fast_sin_cos(float angle, float *sin_out, float *cos_out);
 
 /** @} */

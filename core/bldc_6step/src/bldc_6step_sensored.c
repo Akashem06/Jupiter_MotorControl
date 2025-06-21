@@ -27,6 +27,7 @@ static struct BLDC6StepSensoredData_t s_6step_sensored_data = { 0U };
 /*******************************************************************************************************************************
  * Helper Functions
  *******************************************************************************************************************************/
+
 static uint8_t _6step_sensored_hall_state_to_commutation_index(uint8_t hall_state, bool direction) {
   if (direction) {
     /*

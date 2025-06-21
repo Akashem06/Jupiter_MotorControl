@@ -105,4 +105,6 @@ bool hal_gpio_init_hall_sensors();
 
 uint8_t hal_gpio_get_hall_state();
 
+bool hal_encoder_init();
+
 /** @} */

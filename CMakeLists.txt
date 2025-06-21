@@ -29,17 +29,33 @@ FetchContent_MakeAvailable(unity)
 
 # Core library
 add_library(motor_core STATIC ${CORE_SOURCES})
+
 target_include_directories(
     motor_core PUBLIC
     ${CMAKE_SOURCE_DIR}/inc
     ${CMAKE_SOURCE_DIR}/core/inc
     ${CMAKE_SOURCE_DIR}/core/bldc_6step/inc
+    ${CMAKE_SOURCE_DIR}/core/foc_pmsm/inc
     ${CMAKE_SOURCE_DIR}/utils/inc
     ${CMAKE_SOURCE_DIR}/hal/inc
 )
 
+# Shared libraries for python interfacing (host side)
+add_library(foc_common SHARED 
+    ${CMAKE_SOURCE_DIR}/core/foc_pmsm/src/foc_common.c
+    ${CMAKE_SOURCE_DIR}/utils/src/math_utils.c
+)
+
+target_include_directories(
+    foc_common PUBLIC
+    ${CMAKE_SOURCE_DIR}/core/foc_pmsm/inc
+    ${CMAKE_SOURCE_DIR}/utils/inc
+    ${CMAKE_SOURCE_DIR}/core/inc
+)
+
 # Simulation executable
 add_executable(sim_bldc ${SIM_SOURCES})
+
 target_include_directories(
     sim_bldc PRIVATE
     ${CMAKE_SOURCE_DIR}/simulation/inc
@@ -55,13 +71,13 @@ target_link_libraries(
 
 # Tests executable
 add_executable(run_tests ${TEST_SOURCES})
+
 target_include_directories(
     run_tests PRIVATE
     ${CMAKE_SOURCE_DIR}/tests/inc
     ${CMAKE_SOURCE_DIR}/core/inc
     ${CMAKE_SOURCE_DIR}/core/bldc_6step/inc
-    ${CMAKE_SOURCE_DIR}/core/pmsm/inc
-    ${CMAKE_SOURCE_DIR}/core/stepper/inc
+    ${CMAKE_SOURCE_DIR}/core/foc_pmsm/inc
     ${CMAKE_SOURCE_DIR}/utils/inc
     ${CMAKE_SOURCE_DIR}/hal/inc
 )

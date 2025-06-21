@@ -39,7 +39,7 @@ struct BLDC6StepSensorlessData_t {
   uint32_t last_zc_time;                 /**< Timestamp of the last zero-crossing event (microseconds) */
   uint32_t commutation_period;           /**< Estimated time for one 60-degree commutation step (microseconds) */
   float estimated_speed;                 /**< Estimated motor speed (RPM) */
-  MotorMode_t mode;                      /**< Current motor operational mode */
+  BLDC6StepMotorMode_t mode;             /**< Current motor operational mode */
 };
 
 /**

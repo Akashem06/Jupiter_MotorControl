@@ -57,7 +57,7 @@ typedef enum {
   MOTOR_MODE_RUNNING,    /**< Normal closed-loop operation */
   MOTOR_MODE_BRAKING,    /**< Active braking */
   MOTOR_MODE_ERROR       /**< Error state */
-} MotorMode_t;
+} BLDC6StepMotorMode_t;
 
 /*******************************************************************************************************************************
  * Variables
