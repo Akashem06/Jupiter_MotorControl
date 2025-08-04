@@ -1,0 +1,10 @@
+<map id="Motor_t" name="Motor_t">
+<area shape="rect" id="node1" title="Motor storage class." alt="" coords="290,240,362,265"/>
+<area shape="rect" id="node2" href="$structMotorConfig__t.html" title="Motor configuration class." alt="" coords="171,123,284,148"/>
+<area shape="rect" id="node3" href="$structPidConfig__t.html" title="PID Controller storage class." alt="" coords="9,5,104,31"/>
+<area shape="rect" id="node8" href="$structPidController__t.html" title="PID Controller storage class." alt="" coords="5,123,124,148"/>
+<area shape="rect" id="node4" href="$structPwmConfig__t.html" title="PWM configuration structure." alt="" coords="197,5,303,31"/>
+<area shape="rect" id="node5" href="$structAdcConfig__t.html" title="ADC configuration structure." alt="" coords="327,5,426,31"/>
+<area shape="rect" id="node6" href="$structMotorDriver__t.html" title=" " alt="" coords="309,123,421,148"/>
+<area shape="rect" id="node7" href="$structMotorState__t.html" title="Motor state storage class." alt="" coords="445,123,551,148"/>
+</map>

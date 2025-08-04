@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['phase_5fcurrents_0',['phase_currents',['../structSimulationState__t.html#a7b7512838178252faa16e7873f2dde0b',1,'SimulationState_t::phase_currents()'],['../structMotorState__t.html#a0801516c1aad4e3a4041bd79544ec8c0',1,'MotorState_t::phase_currents()']]],
+  ['phase_5fhigh_1',['phase_high',['../structSimulationState__t.html#a8d4cc2d87f5769357b8553dad2e89959',1,'SimulationState_t']]],
+  ['phase_5finductance_2',['phase_inductance',['../structMotorConfig__t.html#a16d33d75417c174099dfcc2305d1de0c',1,'MotorConfig_t']]],
+  ['phase_5flow_3',['phase_low',['../structSimulationState__t.html#a454d7c0e410b9395528e2c779ff4ca59',1,'SimulationState_t']]],
+  ['phase_5fresistance_4',['phase_resistance',['../structMotorConfig__t.html#a259d7e8e744a678ff4f80076725218af',1,'MotorConfig_t']]],
+  ['phase_5fvoltages_5',['phase_voltages',['../structMotorState__t.html#abf94b3b579116f34e8d4020c820be901',1,'MotorState_t::phase_voltages()'],['../structSimulationState__t.html#aaddc4ee0627562208ce8677ad72c2438',1,'SimulationState_t::phase_voltages()']]],
+  ['pll_5fcfg_6',['pll_cfg',['../structBackEMFPLLConfig__t.html#ae5903f23ca9c8e8bb12142cf7c525fe6',1,'BackEMFPLLConfig_t']]],
+  ['pole_5fpairs_7',['pole_pairs',['../structMotorConfig__t.html#a88cf0e3976a0163c434e1c5a8af42dab',1,'MotorConfig_t']]],
+  ['position_8',['position',['../structMotor__t.html#a76777b356ab2a080225682528119c4fe',1,'Motor_t::position()'],['../structMotor__t.html#a43c41d54265dd7e3a68dc7513bbca70c',1,'Motor_t::position()'],['../structMotorState__t.html#a76777b356ab2a080225682528119c4fe',1,'MotorState_t::position()']]],
+  ['power_5fdissipation_9',['power_dissipation',['../structSimulationState__t.html#a6aedfae3a01d368c90ca9df88f0a18ad',1,'SimulationState_t']]],
+  ['prev_5fderivative_10',['prev_derivative',['../structPidController__t.html#afaf612440717fd258e512ce3aa95751c',1,'PidController_t']]],
+  ['prev_5ferror_11',['prev_error',['../structPidController__t.html#a461cae71b420a0cbbb17f75db63af2b8',1,'PidController_t']]],
+  ['prev_5fomega_12',['prev_omega',['../structFOCObserver__t.html#ae9fb25eb5552fc12ef635d897c9b94e8',1,'FOCObserver_t']]],
+  ['prev_5ftheta_13',['prev_theta',['../structFOCObserver__t.html#adcb4222e19b3cfe9237376504c48248d',1,'FOCObserver_t']]],
+  ['private_5fdata_14',['private_data',['../structFOCObserver__t.html#ad517770dac2061381b2008850ff12e6c',1,'FOCObserver_t::private_data()'],['../structMotor__t.html#ad517770dac2061381b2008850ff12e6c',1,'Motor_t::private_data()']]],
+  ['pwm_5fduty_15',['pwm_duty',['../structBLDC6StepSensoredData__t.html#a7942bba56066a3e3578d589f0a5587cd',1,'BLDC6StepSensoredData_t::pwm_duty()'],['../structBLDC6StepSensorlessData__t.html#a7942bba56066a3e3578d589f0a5587cd',1,'BLDC6StepSensorlessData_t::pwm_duty()'],['../structSimulationState__t.html#ace2629b4726390f75df1be552e2b2fd8',1,'SimulationState_t::pwm_duty()']]]
+];

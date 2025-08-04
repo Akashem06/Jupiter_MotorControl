@@ -1,0 +1,12 @@
+var searchData=
+[
+  ['fabsf_0',['fabsf',['../group__Math__Utils.html#ga9b02e2f3ebf257ac4f4d3ca1da6147d7',1,'fabsf(float x):&#160;math_utils.c'],['../group__Math__Utils.html#ga9b02e2f3ebf257ac4f4d3ca1da6147d7',1,'fabsf(float x):&#160;math_utils.c']]],
+  ['fast_5fsin_5fcos_1',['fast_sin_cos',['../group__Math__Utils.html#ga816ff6c952cf6ca5ccc49c377c5c0163',1,'fast_sin_cos(float angle, float *sin_out, float *cos_out):&#160;math_utils.c'],['../group__Math__Utils.html#ga816ff6c952cf6ca5ccc49c377c5c0163',1,'fast_sin_cos(float angle, float *sin_out, float *cos_out):&#160;math_utils.c']]],
+  ['field_5fweakening_5finit_2',['field_weakening_init',['../group__FOC__PMSMMotor.html#ga8bffa0432aac8df5da234d7a00edcabc',1,'foc_field_weakening.h']]],
+  ['field_5fweakening_5fupdate_3',['field_weakening_update',['../group__FOC__PMSMMotor.html#gaff3b4b21ab1ca5a9809159da18b4ca06',1,'foc_field_weakening.h']]],
+  ['fminf_4',['fminf',['../group__Math__Utils.html#gad21c93b39cdd59dadfd62987fde35650',1,'fminf(float value_1, float value_2):&#160;math_utils.c'],['../group__Math__Utils.html#gad21c93b39cdd59dadfd62987fde35650',1,'fminf(float value_1, float value_2):&#160;math_utils.c']]],
+  ['foc_5fobserver_5fbackemf_5fpll_5fcreate_5fdriver_5',['foc_observer_backemf_pll_create_driver',['../group__FOC__Observers.html#gaf54ab9e5ca405c82233aa977c7747f3e',1,'foc_observer_backemf_pll_create_driver(struct FOCObserver_t *observer, struct BackEMFPLLConfig_t *config):&#160;backemf_pll_observer.c'],['../group__FOC__Observers.html#gaf54ab9e5ca405c82233aa977c7747f3e',1,'foc_observer_backemf_pll_create_driver(struct FOCObserver_t *observer, struct BackEMFPLLConfig_t *config):&#160;backemf_pll_observer.c']]],
+  ['foc_5fobserver_5fbackemf_5fpll_5fget_5fbemf_6',['foc_observer_backemf_pll_get_bemf',['../group__FOC__Observers.html#ga960d92c1fe13f40c18f6e9af0a7afc88',1,'backemf_pll_observer.h']]],
+  ['foc_5fobserver_5fbackemf_5fpll_5fget_5fstatus_7',['foc_observer_backemf_pll_get_status',['../group__FOC__Observers.html#ga62dd2026591da20ccfb2c899b146d20f',1,'backemf_pll_observer.h']]],
+  ['foc_5fsensored_5fcreate_5fdriver_8',['foc_sensored_create_driver',['../group__FOC__PMSMMotor.html#ga3a4d793eb605389504a2b31c7e69d11c',1,'foc_sensored_create_driver(struct Motor_t *motor):&#160;foc_sensored.c'],['../group__FOC__PMSMMotor.html#ga3a4d793eb605389504a2b31c7e69d11c',1,'foc_sensored_create_driver(struct Motor_t *motor):&#160;foc_sensored.c']]]
+];
