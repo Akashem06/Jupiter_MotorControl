@@ -17,6 +17,7 @@
 
 /* Intra-component Headers */
 #include "foc_common.h"
+#include "foc_field_weakening.h"
 #include "motor.h"
 
 /**
@@ -56,6 +57,9 @@ struct FOCSensoredData_t {
   struct PidConfig_t current_q_pid_config; /**< Q-axis current PID Configuration */
   struct PidController_t current_d;        /**< D-axis current PID controller */
   struct PidController_t current_q;        /**< Q-axis current PID controller */
+
+  struct FieldWeakeningConfig_t field_weakening_config;
+  struct FieldWeakeningState_t field_weakening_state;
 
   FOCMotorMode_t mode;
 };

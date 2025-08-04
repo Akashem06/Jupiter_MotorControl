@@ -1,9 +1,9 @@
 #pragma once
 
 /*******************************************************************************************************************************
- * @file   test_pid.h
+ * @file   utils_error.h
  *
- * @brief  Header file for PID tests
+ * @brief  Header file for the Utils errors
  *
  * @date   2025-02-07
  * @author Aryan Kashem
@@ -16,14 +16,19 @@
 /* Intra-component Headers */
 
 /**
- * @defgroup TestHeaders Test files
- * @brief    Test headers for 3-phase inverters
+ * @defgroup UtilsClass Utils storage class
+ * @brief    Utils agonistic storage class
  * @{
  */
 
 /**
- * @brief   Run PID tests
+ * @brief   Utils error class
  */
-void run_pid_tests();
+typedef enum {
+  UTILS_OK,
+  UTILS_INVALID_ARGS,
+  UTILS_UNINITIALIZED,
+  UTILS_INTERNAL_ERROR,
+} UtilsError_t;
 
 /** @} */

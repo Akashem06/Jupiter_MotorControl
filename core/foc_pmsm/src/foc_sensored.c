@@ -15,6 +15,8 @@
 #include "foc_common.h"
 #include "hal.h"
 #include "math_utils.h"
+#include "transform_utils.h"
+#include "svpwm.h"
 
 /* Intra-component Headers */
 #include "foc_sensored.h"
@@ -41,6 +43,13 @@ static struct FOCSensoredData_t s_foc_data = {
     .output_min           = FOC_PID_DEFAULT_Q_OUTPUT_MIN,
     .derivative_ema_alpha = FOC_PID_DEFAULT_Q_DERIV_EMA_ALPHA,
   },
+
+  .field_weakening_config = {
+    .id_max = 0.0f,
+    .id_min = -2.0f,
+    .k_fw = 0.01f,
+    .voltage_margin = 0.9f,
+  }
 };
 
 /*******************************************************************************************************************************
@@ -61,6 +70,8 @@ static MotorError_t foc_sensored_init(struct Motor_t *motor, struct MotorConfig_
 
   pid_init(&s_foc_data.current_d, &s_foc_data.current_d_pid_config);
   pid_init(&s_foc_data.current_q, &s_foc_data.current_q_pid_config);
+
+  field_weakening_init(&s_foc_data.field_weakening_state, &s_foc_data.field_weakening_config);
 
   if (!hal_pwm_init(&config->pwm_config) || !hal_adc_init(&config->adc_config) || !hal_encoder_init()) {
     return MOTOR_INIT_ERROR;
@@ -151,15 +162,21 @@ static MotorError_t foc_sensored_commutate(struct Motor_t *motor) {
   park_transform(alpha, beta, foc_data->electrical_angle, &foc_data->id, &foc_data->iq);
 
   /*
-   * Step 5: Determine VD and VQ (D-axis and Q-axis voltages) based on control method
-   * Minimize ID to 0, maximizing motor torque generation
+   * Step 5: Apply Field Weakening if necessary based on control mode
+   * We apply field weakening (adjust D-axis current) only in Torque or Velocity mode.
    */
   switch (motor->config->control_mode) {
     case CONTROL_MODE_CURRENT:
     case CONTROL_MODE_TORQUE: {
-      float id_ref = 0.0f;
-      float iq_ref =
-          (motor->config->control_mode == CONTROL_MODE_TORQUE) ? (motor->setpoint.torque / motor->config->torque_constant) : motor->setpoint.current;
+      float id_ref = 0.0f; 
+
+      if (motor->config->control_mode == CONTROL_MODE_TORQUE) {
+        field_weakening_update(&foc_data->field_weakening_state, &foc_data->field_weakening_config, foc_data->vd, foc_data->vq, motor->state.dc_voltage);
+        id_ref = foc_data->field_weakening_state.id_ref;
+      }
+
+      float iq_ref = (motor->config->control_mode == CONTROL_MODE_TORQUE) ? 
+                     (motor->setpoint.torque / motor->config->torque_constant) : motor->setpoint.current;
 
       foc_data->vd = pid_update(&foc_data->current_d, id_ref, foc_data->id, delta_time);
       foc_data->vq = pid_update(&foc_data->current_q, iq_ref, foc_data->iq, delta_time);
@@ -168,7 +185,20 @@ static MotorError_t foc_sensored_commutate(struct Motor_t *motor) {
 
     case CONTROL_MODE_VELOCITY: {
       float iq_ref = pid_update(&motor->control.velocity, motor->setpoint.velocity, motor->state.velocity, delta_time);
-      float id_ref = 0.0f;
+
+      field_weakening_update(&foc_data->field_weakening_state, &foc_data->field_weakening_config, foc_data->vd, foc_data->vq, motor->state.dc_voltage);
+      float id_ref = foc_data->field_weakening_state.id_ref;
+
+      foc_data->vd = pid_update(&foc_data->current_d, id_ref, foc_data->id, delta_time);
+      foc_data->vq = pid_update(&foc_data->current_q, iq_ref, foc_data->iq, delta_time);
+      break;
+    }
+
+    case CONTROL_MODE_POSITION: {
+      float iq_ref = pid_update(&motor->control.velocity, motor->setpoint.velocity, motor->state.velocity, delta_time);
+
+      field_weakening_update(&foc_data->field_weakening_state, &foc_data->field_weakening_config, foc_data->vd, foc_data->vq, motor->state.dc_voltage);
+      float id_ref = foc_data->field_weakening_state.id_ref;
 
       foc_data->vd = pid_update(&foc_data->current_d, id_ref, foc_data->id, delta_time);
       foc_data->vq = pid_update(&foc_data->current_q, iq_ref, foc_data->iq, delta_time);
@@ -176,14 +206,15 @@ static MotorError_t foc_sensored_commutate(struct Motor_t *motor) {
     }
 
     case CONTROL_MODE_VOLTAGE:
-    default:
+    default: {
       foc_data->vd = motor->setpoint.voltage;
       foc_data->vq = 0.0f;
       break;
+    }
   }
 
   /*
-   * Step 6: Inverse park transform
+   * Step 6: Inverse park transform to convert the D/Q axis voltages back to alpha/beta.
    */
   inverse_park_transform(foc_data->vd, foc_data->vq, foc_data->electrical_angle, &alpha, &beta);
   return MOTOR_OK;

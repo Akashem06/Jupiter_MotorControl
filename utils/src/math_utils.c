@@ -35,6 +35,33 @@ float normalize_angle(float angle) {
   return angle;
 }
 
+float fabsf(float x) {
+    union {
+        float f;
+        uint32_t i;
+    } u;
+
+    u.f = x;
+    u.i &= 0x7FFFFFFFU; 
+
+    return u.f;
+}
+
+float sqrtf(float x) {
+    if (x < 0.0f) return -1.0f;
+    if (x == 0.0f) return 0.0f;
+
+    float guess = x / 2.0f;
+    float epsilon = 0.00001f;
+
+    // Newton-Raphson iteration
+    while ((guess * guess - x) > epsilon || (guess * guess - x) < -epsilon) {
+        guess = (guess + x / guess) * 0.5f;
+    }
+
+    return guess;
+}
+
 float mech_to_elec_angle(float mechanical_angle, uint8_t pole_pairs) {
   float electrical_angle = mechanical_angle * (float)pole_pairs;
   return normalize_angle(electrical_angle);

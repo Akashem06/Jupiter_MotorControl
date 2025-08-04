@@ -18,7 +18,7 @@
 
 /**
  * @defgroup PIDControl_Utils PID Control loop
- * @brief    PID Control loop utilities for motor control
+ * @brief    PID Control loop utilities for 3-phase inverters
  * @{
  */
 

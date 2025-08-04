@@ -41,16 +41,25 @@ target_include_directories(
 )
 
 # Shared libraries for python interfacing (host side)
-add_library(foc_common SHARED 
-    ${CMAKE_SOURCE_DIR}/core/foc_pmsm/src/foc_common.c
+add_library(svpwm_transform_python_visualizer SHARED 
+    ${CMAKE_SOURCE_DIR}/utils/src/transform_utils.c
+    ${CMAKE_SOURCE_DIR}/utils/src/svpwm.c
     ${CMAKE_SOURCE_DIR}/utils/src/math_utils.c
 )
 
 target_include_directories(
-    foc_common PUBLIC
-    ${CMAKE_SOURCE_DIR}/core/foc_pmsm/inc
+    svpwm_transform_python_visualizer PUBLIC
     ${CMAKE_SOURCE_DIR}/utils/inc
-    ${CMAKE_SOURCE_DIR}/core/inc
+)
+
+add_library(pll_python_visualizer SHARED 
+    ${CMAKE_SOURCE_DIR}/utils/src/pll.c
+    ${CMAKE_SOURCE_DIR}/utils/src/math_utils.c
+)
+
+target_include_directories(
+    pll_python_visualizer PUBLIC
+    ${CMAKE_SOURCE_DIR}/utils/inc
 )
 
 # Simulation executable

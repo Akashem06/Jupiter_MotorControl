@@ -18,7 +18,7 @@
 
 /**
  * @defgroup Math_Utils Math Utilities
- * @brief    Math utilities for motor control
+ * @brief    Math utilities for 3-phase inverters
  * @{
  */
 
@@ -53,6 +53,20 @@ float clamp(float value, float min, float max);
  * @return  Minimum float value of the two parameters
  */
 float fminf(float value_1, float value_2);
+
+/**
+ * @brief   Returns the absolute valued float
+ * @param   x Value subject to an absolute value operation
+ * @return  Absolute value version of x
+ */
+float fabsf(float x);
+
+/**
+ * @brief   Returns the square root of a float
+ * @param   x Value subject to a square root operation
+ * @return  Square root of x
+ */
+float sqrtf(float x);
 
 /**
  * @brief   Normalize angle into [0, 2π)

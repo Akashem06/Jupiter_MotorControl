@@ -17,7 +17,7 @@
 
 /**
  * @defgroup TestHeaders Test files
- * @brief    Test headers for Motor control
+ * @brief    Test headers for 3-phase inverters
  * @{
  */
 

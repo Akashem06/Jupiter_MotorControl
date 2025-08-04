@@ -1,74 +1,25 @@
 /*******************************************************************************************************************************
- * @file   foc_common.c
+ * @file   svpwm.c
  *
- * @brief  Source file for FOC common library
+ * @brief  Source file for Space vector Pulse-width Modulation
  *
- * @date   2025-06-18
+ * @date   2025-08-03
  * @author Aryan Kashem
  *******************************************************************************************************************************/
 
 /* Standard library Headers */
+#include <stdbool.h>
 #include <stddef.h>
 
 /* Inter-component Headers */
-#include "math_utils.h"
 
 /* Intra-component Headers */
-#include "foc_common.h"
+#include "svpwm.h"
+#include "math_utils.h"
 
-MotorError_t clarke_transform_2phase(float ia, float ib, float *alpha, float *beta) {
-  if (alpha == NULL || beta == NULL) {
-    return MOTOR_INVALID_ARGS;
-  }
-
-  *alpha = ia;
-  *beta = (ia + (2.0f * ib)) * (INV_SQRT3);
-
-  return MOTOR_OK;
-}
-
-MotorError_t clarke_transform_3phase(float ia, float ib, float ic, float *alpha, float *beta) {
-  if (alpha == NULL || beta == NULL) {
-    return MOTOR_INVALID_ARGS;
-  }
-
-  *alpha = ia;
-  *beta = (INV_SQRT3) * (ib - ic);
-
-  return MOTOR_OK;
-}
-
-MotorError_t park_transform(float alpha, float beta, float theta, float *d, float *q) {
-  if (d == NULL || q == NULL) {
-    return MOTOR_INVALID_ARGS;
-  }
-
-  float sin_theta, cos_theta;
-  fast_sin_cos(theta, &sin_theta, &cos_theta);
-
-  *d = alpha * cos_theta + beta * sin_theta;
-  *q = -alpha * sin_theta + beta * cos_theta;
-
-  return MOTOR_OK;
-}
-
-MotorError_t inverse_park_transform(float d, float q, float theta, float *alpha, float *beta) {
-  if (alpha == NULL || beta == NULL) {
-    return MOTOR_INVALID_ARGS;
-  }
-
-  float sin_theta, cos_theta;
-  fast_sin_cos(theta, &sin_theta, &cos_theta);
-
-  *alpha = d * cos_theta - q * sin_theta;
-  *beta = d * sin_theta + q * cos_theta;
-
-  return MOTOR_OK;
-}
-
-MotorError_t svpwm_generate(float theta_e, float vref_mag, float *duty_A, float *duty_B, float *duty_C) {
+UtilsError_t svpwm_generate(float theta_e, float vref_mag, float *duty_A, float *duty_B, float *duty_C) {
   if (duty_A == NULL || duty_B == NULL || duty_C == NULL) {
-    return MOTOR_INVALID_ARGS;
+    return UTILS_INVALID_ARGS;
   }
 
   theta_e = normalize_angle(theta_e);
@@ -150,12 +101,12 @@ MotorError_t svpwm_generate(float theta_e, float vref_mag, float *duty_A, float 
       break;
 
     default:
-      return MOTOR_INTERNAL_ERROR;
+      return UTILS_INTERNAL_ERROR;
   }
 
   *duty_A = Ta;
   *duty_B = Tb;
   *duty_C = Tc;
 
-  return MOTOR_OK;
+  return UTILS_OK;
 }

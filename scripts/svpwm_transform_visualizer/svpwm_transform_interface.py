@@ -1,12 +1,12 @@
 import ctypes
 from pathlib import Path
 
-class FOCCommon:
+class SvpwmTransformInterface:
     def __init__(self, lib_path=None):
         if lib_path is None:
-            lib_path = Path(__file__).parent.parent.parent / "build" / "libfoc_common.so"
+            lib_path = Path(__file__).parent.parent.parent / "build" / "libsvpwm_transform_python_visualizer.so"
         lib_path = lib_path.resolve()
-        print(f"Loading FOC common shared library from: {lib_path}")
+        print(f"Loading SVPWM and Parke/Clarke shared library from: {lib_path}")
 
         self.lib = ctypes.CDLL(str(lib_path))
 
